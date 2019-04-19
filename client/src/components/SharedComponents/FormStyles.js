@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color, colorScheme, fontSizing, flex, breakpoints } from '../StyleComponents/theme'
+import { color, colorScheme, fontSizing, flex, breakpoints } from '../DesignComponents/theme'
 
 export const FormContainer = styled.div`
   width: 90%;

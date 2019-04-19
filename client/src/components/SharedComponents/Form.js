@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import { FormContainer } from './FormStyles'
-import Button from '../StyleComponents/Button'
+import Button from '../DesignComponents/Button'
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || '/'
 
