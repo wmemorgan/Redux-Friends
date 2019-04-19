@@ -58,7 +58,7 @@ function authenticator(req, res, next) {
   if (authorization === token) {
     next();
   } else {
-    res.status(403).json({ error: 'User be logged in to do that.' });
+    res.status(403).json({ error: 'User must be logged in to do that.' });
   }
 }
 
@@ -72,7 +72,7 @@ router.post('/api/login', (req, res) => {
   } else {
     res
       .status(403)
-      .json({ error: 'Username or Password incorrect. Please see Readme' });
+      .json({ error: 'Username or Password incorrect.' });
   }
 });
 
