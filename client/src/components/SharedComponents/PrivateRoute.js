@@ -8,7 +8,7 @@ const PrivateRoute = ({ component: Component, errorStatusCode, ...rest }) => {
       {...rest}
       render={props => {
         if (localStorage.getItem('token') && errorStatusCode !== 403) {
-          return <Component {...props} />
+          return <Component {...rest} {...props}/>
         } else {
           // redirect to login
           console.log(`redirecting!!!`)
