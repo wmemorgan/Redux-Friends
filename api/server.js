@@ -64,7 +64,7 @@ function authenticator(req, res, next) {
 
 router.post('/api/login', (req, res) => {
   const { username, password } = req.body;
-  if (username === 'Lambda School' && password === 'i<3Lambd4') {
+  if (username === 'testuser' && password === '1234') {
     req.loggedIn = true;
     res.status(200).json({
       payload: token
