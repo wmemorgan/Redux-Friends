@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
-import PrivateRoute from '../SharedComponents/PrivateRoute'
 import { FriendsListContainer, Preview, SpinnerContainer } from './FriendsStyleComponents'
-import Friend from './Friend'
 
 import { getData } from '../../actions'
 
