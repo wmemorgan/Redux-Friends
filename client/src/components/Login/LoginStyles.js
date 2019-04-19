@@ -11,10 +11,10 @@ export const LoginContainer = styled.div`
   background: ${color.lightText};
 
   .error {
-    margin: 0 auto;
-    margin-top: 16px;
-    padding: 16px;
     width: 300px;
+    ${flex('column','center','center')};
+    margin-top: 10px;
+    padding: 10px 0;
     border: 1px solid #ff00002e;
     border-radius: 4px;
     background: #ff000036;
