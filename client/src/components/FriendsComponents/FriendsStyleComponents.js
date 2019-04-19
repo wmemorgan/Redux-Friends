@@ -103,4 +103,9 @@ export const ButtonMenu = styled.nav`
   }
 `
 
-
+export const SpinnerContainer = styled.div`
+  width: 90%;
+  ${flex('column','center','center')};
+  background: ${color.primaryBgShading};
+  color: ${color.primaryColor};
+`

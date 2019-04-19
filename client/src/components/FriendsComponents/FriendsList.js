@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-
-import { FriendsListContainer, Preview } from './FriendsStyleComponents'
+import Loader from 'react-loader-spinner'
+import PrivateRoute from '../SharedComponents/PrivateRoute'
+import { FriendsListContainer, Preview, SpinnerContainer } from './FriendsStyleComponents'
+import Friend from './Friend'
 
 import { getData } from '../../actions'
 
@@ -23,9 +25,12 @@ export class FriendsList extends Component {
               <div>id: {friend.id}</div>
             </Preview>
           </Link>
-        ))) : (
+          ))) : (
+          <SpinnerContainer>
             <h2>Loading...</h2>
-          )}
+            <Loader type="Puff" color="#265077" height="60" width="60" />
+          </SpinnerContainer>
+        )}
       </FriendsListContainer>
     )
   }

@@ -4,14 +4,14 @@ import PrivateRoute from './components/SharedComponents/PrivateRoute'
 
 import AppContainer from './components/DesignComponents/AppStyles'
 import Login from './components/Login/Login'
-import { FriendsList } from './components/FriendsComponents'
+import FriendsList from './components/FriendsComponents/FriendsList'
 
 class App extends Component {
   render() {
     return (
       <AppContainer>
         <Route path="/login" component={Login} />
-        <PrivateRoute exact path="/friends" component={FriendsList} />
+        <PrivateRoute exact path="/" component={FriendsList} />
       </AppContainer>
     );
   }
