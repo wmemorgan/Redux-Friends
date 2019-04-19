@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import PropTypes from "prop-types"
 
 import { FriendsListContainer, Preview } from './FriendsStyleComponents'
-// import Form from '../SharedComponents/Form'
-// import Friend from './Friend'
 
-export const FriendsList = props => {
-  const { friends } = props
-  return (
-    <FriendsListContainer>
-      <h1>Friends of Lambda School</h1>
-      {friends.length > 0 ? (friends.map(friend => (
+import { getData } from '../../actions'
+
+export class FriendsList extends Component {
+  componentDidMount() {
+    this.props.getData()
+  }
+
+  render() {
+    const { friends } = this.props
+    return (
+      <FriendsListContainer>
+        <h1>Friends of Lambda School</h1>
+        {friends.length > 0 ? (friends.map(friend => (
           <Link key={friend.id} to={`/friends/${friend.id}`}>
             <Preview>
               <div>{friend.name}</div>
@@ -19,12 +24,16 @@ export const FriendsList = props => {
             </Preview>
           </Link>
         ))) : (
-          <h2>Loading...</h2>
-      )}
-    </FriendsListContainer>
-  )
+            <h2>Loading...</h2>
+          )}
+      </FriendsListContainer>
+    )
+  }
 }
 
-FriendsList.propTypes = {
-  friends: PropTypes.array
-}
+const mapStateToProps = ({ fetchingData, friends }) => ({
+  fetchingData,
+  friends
+})
+
+export default connect(mapStateToProps, { getData })(FriendsList)
