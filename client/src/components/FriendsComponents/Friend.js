@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { Link } from 'react-router-dom'
-// import PropTypes from "prop-types"
 
-import { updateData } from '../../actions'
+import { updateData, deleteData } from '../../actions'
 
 import { FriendInfoContainer, ButtonMenu } from './FriendsStyleComponents'
 import Button from '../DesignComponents/Button'
@@ -52,6 +50,11 @@ class Friend extends Component {
     })    
   }
 
+  handleDelete = id => {
+    this.props.deleteData(id)
+    this.props.history.push('/')
+  }
+
   render() {
     console.log(`Friend props: `, this.props)
     const { name, id, age, email } = this.props.friend
@@ -61,7 +64,7 @@ class Friend extends Component {
           <i className="far fa-edit" onClick={() => this.toggleEdit()}>
           </i>
           <i className="fa fa-trash"
-            onClick={() => this.props.deleteSmurf(id)}>
+            onClick={() => this.handleDelete(id)}>
           </i>
         </header>
         <div className="friend-info">
@@ -101,10 +104,4 @@ class Friend extends Component {
   }
 }
 
-// Friend.propType = {
-//   name: PropTypes.string,
-//   age: PropTypes.number,
-//   email: PropTypes.string
-// }
-
-export default connect(null, {updateData})(Friend)
+export default connect(null, { updateData, deleteData })(Friend)
