@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { HeaderContainer, Nav, CrudNav } from './HeaderStyles'
+import { HeaderContainer, Nav } from './HeaderStyles'
 import MobileMenuIcon from '../DesignComponents/MobileMenuIcon'
 import CloseIconMobile from '../DesignComponents/CloseIconMobile'
 
@@ -38,19 +38,10 @@ class Header extends Component {
         <Nav {...this.state}>
           <NavLink to='/' onClick={this.toggleDisplay}>
             Home
-        </NavLink>
-          <CrudNav>
-            <NavLink to='/add' onClick={this.toggleDisplay}>
-              Add
           </NavLink>
-            <NavLink to='/update' onClick={this.toggleDisplay}>
-              Update
+          <NavLink to='/add' onClick={this.toggleDisplay}>
+            Add Friend
           </NavLink>
-            <NavLink to='/delete' onClick={this.toggleDisplay}>
-              Delete
-          </NavLink>
-          </CrudNav>
-
         </Nav>
       </HeaderContainer>
     )
