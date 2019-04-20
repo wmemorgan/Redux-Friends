@@ -15,7 +15,7 @@ class Form extends Component {
     email: ''
   }
 
-  inputChangeHandler = e => {
+  handleInput = e => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -96,22 +96,22 @@ class Form extends Component {
         <form onSubmit={this.submitHandler}>
           {(this.props.update || this.props.delete) && 
             <input name="id" type="number" 
-              placeholder="ID" onChange={this.inputChangeHandler} 
+              placeholder="ID" onChange={this.handleInput} 
               value={this.state.id} 
             />
           }
           {!this.props.delete && (
             <>
               <input name="name" type="text" 
-                placeholder="Name" onChange={this.inputChangeHandler}
+                placeholder="Name" onChange={this.handleInput}
                 value={this.state.name} 
               />
               <input name="age" type="number" 
-                placeholder="Age" onChange={this.inputChangeHandler}
+                placeholder="Age" onChange={this.handleInput}
                 value={this.state.age} 
               />
               <input name="email" type="email" 
-                placeholder="Email" onChange={this.inputChangeHandler}
+                placeholder="Email" onChange={this.handleInput}
                 value={this.state.email}
               />
             </>
