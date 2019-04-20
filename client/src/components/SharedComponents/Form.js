@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-
+import { connect } from 'react-redux'
 import { FormContainer } from './FormStyles'
 import Button from '../DesignComponents/Button'
 
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || '/'
+import { addData, deleteData, updateData } from '../../actions'
+
+// const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || '/'
 
 class Form extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      id: '',
-      name: '',
-      age: '',
-      email: ''
-    }
+  state = {
+    id: '',
+    name: '',
+    age: '',
+    email: ''
   }
 
   inputChangeHandler = e => {
@@ -33,42 +31,23 @@ class Form extends Component {
     }
 
     // send new record to api
-    axios.post(`${API_ENDPOINT}.netlify/functions/server/api/friends`, newRecord)
-      .then(response => {
-        this.props.updateFriends(response.data)
-        this.props.history.push('/')
-      })
-      .catch(err => console.log(err))
+    this.props.addData(newRecord)
 
     console.log(`Form submitted data sent: ${JSON.stringify(newRecord)}`)
     
     // reset form fields
     this.setState({
-      id: '',
       name: '',
       age: '',
       email: ''
     })
   }
 
-  prePopulateForm = id => {
-    if(id === this.props.id) {
-      this.setState((
-        this.props.friend
-      ))
-    }
-  }
-
   updateRecord = e => {
     // prevent default
     e.preventDefault()
     // send updated record to api
-    axios.put(`${API_ENDPOINT}.netlify/functions/server/api/friends/${this.state.id}`, this.state)
-      .then(response => {
-        this.props.updateFriends(response.data)
-        this.props.history.push('/')
-      })
-      .catch(err => console.log(err))
+    this.props.updateData(this.state)
 
     console.log(`Form submitted data sent: ${JSON.stringify(this.state)}`)
     
@@ -85,7 +64,7 @@ class Form extends Component {
     // prevent default
     e.preventDefault()
     // invoke the deleteFriend method and pass id
-    this.props.deleteFriend(this.state.id)
+    this.props.deleteData(this.state.id)
     // reset form field
     this.setState({id: ''})
   }
@@ -101,11 +80,11 @@ class Form extends Component {
       }
   }
 
-  componentDidMount() {
-    if(this.props.update) {
-      this.prePopulateForm(this.props.id)
-    }
-  }
+  // componentDidMount() {
+  //   if(this.props.update) {
+  //     this.prePopulateForm(this.props.id)
+  //   }
+  // }
 
   render() {
     return (
@@ -147,4 +126,4 @@ class Form extends Component {
 
 }
 
-export default Form
+export default connect(null, { addData, deleteData, updateData })(Form)
