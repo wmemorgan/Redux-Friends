@@ -93,7 +93,8 @@ router.get('/api/friends/:id', authenticator, (req, res) => {
 });
 
 router.post('/api/friends', authenticator, (req, res) => {
-  const friend = { id: getNextId(), ...req.body };
+  let lastIndex = friends.length - 1
+  const friend = { id: getNextId(friends[lastIndex].id), ...req.body };
 
   friends = [...friends, friend];
 
@@ -127,8 +128,8 @@ router.delete('/api/friends/:id', authenticator, (req, res) => {
   res.send(friends);
 });
 
-function getNextId() {
-  return nextId + 1;
+function getNextId(num) {
+  return num + 1;
 }
 
 app.use('/.netlify/functions/server', router)
