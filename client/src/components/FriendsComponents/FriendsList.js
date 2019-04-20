@@ -4,13 +4,7 @@ import { Link } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import { FriendsListContainer, Preview, SpinnerContainer } from './FriendsStyleComponents'
 
-import { getData } from '../../actions'
-
-export class FriendsList extends Component {
-  componentDidMount() {
-    this.props.getData()
-  }
-
+class FriendsList extends Component {
   render() {
     const { friends } = this.props
     return (
@@ -39,4 +33,4 @@ const mapStateToProps = ({ fetchingData, friends }) => ({
   friends
 })
 
-export default connect(mapStateToProps, { getData })(FriendsList)
+export default connect(mapStateToProps, {})(FriendsList)
