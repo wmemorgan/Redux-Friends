@@ -8,7 +8,7 @@ import { getData } from '../../actions'
 import FriendsList from '../FriendsComponents/FriendsList'
 import Friend from '../FriendsComponents/Friend'
 import Form from '../SharedComponents/Form'
-import Login from '../Login/Login'
+import Login from '../LoginComponents/Login'
 
 class Routes extends Component {
   componentDidMount() {
