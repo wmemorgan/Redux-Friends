@@ -43,41 +43,76 @@ export const Preview = styled.div`
 `
 
 export const FriendInfoContainer = styled.div`
-  ${flex('column','flex-start','center')}
+  ${flex('column')};
   width: 80%;
   min-width: 300px;
   max-width: 600px;
   margin: 20px 0;
-  padding: 20px;
   border-radius: 5px;
   box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
   background: ${color.lightText};
 
-  h3 {
-    margin: 5px 0;
-    font-size: ${fontSizing.m};
-    font-weight: bold;
-    color: ${colorScheme.headingColor};
+  header {
+    width: 100%;
+    ${flex('row', 'center', 'flex-end')};
+    margin: 0;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(to top, #cccccc 0%, #d6d6d6 1px, #ebebeb 100%); 
+    
+    @media ${breakpoints[0]} {
+      padding: 5px;
+    }
+
+    i {
+        margin: 0 10px;
+        font-size: ${fontSizing.xs};
+        cursor: pointer;
+    }
   }
 
-  p {
-    font-size: ${fontSizing.s};
-    margin: 5px 0;
-  }
+  .friend-info {
+    ${flex('column', 'flex-start', 'center')}
+    padding: 20px;
 
-  .stat-category {
-    font-weight: bold;
-  }
-
-  @media ${breakpoints[0]} {
     h3 {
-      font-size: ${fontSizing.sm};
+      margin: 10px 0;
+      font-size: ${fontSizing.ml};
+      letter-spacing: 0.35rem;
+      color: ${colorScheme.headingColor};
     }
 
-    p {
-      font-size: ${fontSizing.xs};
+    input:first-child {
+      margin: 10px 0;
+      font-size: ${fontSizing.m};
     }
-  }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 6fr;
+      grid-gap: 10px;
+      
+      & * {
+        font-size: ${fontSizing.m};
+
+        @media ${breakpoints[0]} {
+          font-size: ${fontSizing.sm};
+        }
+      }
+
+      .stat-category {
+        font-weight: bolder;
+        color: ${color.emphasis};
+      }
+
+    }
+
+    @media ${breakpoints[0]} {
+      h3 {
+        font-size: ${fontSizing.m};
+      }
+    }
+}
 
 `
 
@@ -85,19 +120,19 @@ export const ButtonMenu = styled.nav`
   align-self: center;
   width: 80%;
   margin-top: 20px;
-  ${flex('row','center','space-evenly')};
+  display: ${props => !props.edit ? 'none' : 'flex'};
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   button {
     width: 100px;
-    font-size: ${fontSizing.xs};
+    font-size: ${fontSizing.m};
   }
 
   @media ${breakpoints[0]} {
-    ${flex('column', 'center', 'center')};
-
     button {
-      width: 70px;
-      font-size: ${fontSizing.xxs};
+      font-size: ${fontSizing.s};
       margin-bottom: 20px;
     }
   }
