@@ -92,6 +92,7 @@ class Form extends Component {
   render() {
     return (
       <FormContainer {...this.props}>
+        <div className="windowFrame"></div>
         <form onSubmit={this.submitHandler}>
           {(this.props.update || this.props.delete) && 
             <input name="id" type="number" 
