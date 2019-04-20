@@ -45,13 +45,13 @@ export const ADD_DATA_FAILURE = 'ADD_DATA_FAILURE'
 
 export const addData = (friend) => dispatch => {
   axiosWithAuth()
-    .delete(`${API_ENDPOINT}.netlify/functions/server/api/friends/${id}`)
+    .post(`${API_ENDPOINT}.netlify/functions/server/api/friends/`, friend)
     .then(res => {
-      dispatch({ type: ADD_SUCCESS, payload: res.data })
+      dispatch({ type: ADD_DATA_SUCCESS, payload: res.data })
     })
     .catch(err => {
       console.log(err.response)
-      dispatch({ type: ADD_FAILURE, payload: err.response })
+      dispatch({ type: ADD_DATA_FAILURE, payload: err.response })
     })
 }
 
