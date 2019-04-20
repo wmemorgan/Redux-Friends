@@ -32,6 +32,7 @@ class Form extends Component {
 
     // send new record to api
     this.props.addData(newRecord)
+    this.props.history.push('/')
 
     console.log(`Form submitted data sent: ${JSON.stringify(newRecord)}`)
     
@@ -48,6 +49,7 @@ class Form extends Component {
     e.preventDefault()
     // send updated record to api
     this.props.updateData(this.state)
+    this.props.history.push(`/friends/${this.state.id}`)
 
     console.log(`Form submitted data sent: ${JSON.stringify(this.state)}`)
     
@@ -65,6 +67,7 @@ class Form extends Component {
     e.preventDefault()
     // invoke the deleteFriend method and pass id
     this.props.deleteData(this.state.id)
+    this.props.history.push('/')
     // reset form field
     this.setState({id: ''})
   }
