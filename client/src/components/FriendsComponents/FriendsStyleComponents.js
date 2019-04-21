@@ -111,7 +111,7 @@ export const FriendInfoContainer = styled.div`
 
     @media ${breakpoints[0]} {
       h3 {
-        font-size: ${fontSizing.m};
+        font-size: ${fontSizing.sm};
       }
     }
 }
