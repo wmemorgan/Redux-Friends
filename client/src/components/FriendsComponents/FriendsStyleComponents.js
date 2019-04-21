@@ -96,7 +96,9 @@ export const FriendInfoContainer = styled.div`
         font-size: ${fontSizing.m};
 
         @media ${breakpoints[0]} {
-          font-size: ${fontSizing.sm};
+          grid-template-columns: 1fr 4fr;
+          grid-gap: 5px;
+          font-size: ${fontSizing.s};
         }
       }
 
