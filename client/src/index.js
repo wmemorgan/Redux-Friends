@@ -8,6 +8,8 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyle from './components/DesignComponents/GlobalStyle'
 import theme from './components/DesignComponents/theme'
 
+// import './bootstap/dist/css/bootstrap.min.css'
+
 import { logger } from './utils/logger'
 import reducer from './reducers'
 

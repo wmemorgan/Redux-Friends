@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
+import { Button } from 'reactstrap'
 import { FriendsListContainer, Preview, SpinnerContainer } from './FriendsStyleComponents'
 
 class FriendsList extends Component {
@@ -10,6 +11,7 @@ class FriendsList extends Component {
     return (
       <FriendsListContainer>
         <h1>Friends of Lambda School</h1>
+        <Button>Press Me</Button>
         {friends.length > 0 ? (friends.map(friend => (
           <Link key={friend.id} to={`/friends/${friend.id}`}>
             <Preview>
